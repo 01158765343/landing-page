@@ -34,6 +34,10 @@ section.forEach(function (link){
     // remove activ class
     link.scrollIntoView({behavior:'smooth'});
     //scorll in to view section have same attribute
+    removAct();
+    // function to remove class activ from all element li
+    li.classList.add('activ-li');
+    // event add class activ to element li
    });
 });
 
@@ -44,19 +48,34 @@ function removActiv(){
   }
 }
 
+// get all element li 
+const allLi =document.querySelectorAll('li');
+
 //function always make when scroll in document
 onscroll= function (){ 
   section.forEach(function (elem){
-    // if hade element section btwen -50 , 100 add class active 
-    // else remove class active 
-    if (elem.getBoundingClientRect().top > -50 && elem.getBoundingClientRect().top <= 100){
-      elem.getAttribute('data-nav');
-      elem.classList.add('your-active-class');
-    } else {
-      elem.classList.remove('your-active-class');
-    }
+    allLi.forEach(function (li){
+      // if hade element section btwen -50 , 100 add class active 
+      // else remove class active 
+      if (elem.getBoundingClientRect().top > -50 && elem.getBoundingClientRect().top <= 100){
+        elem.getAttribute('data-nav');
+        elem.classList.add('your-active-class');
+        // add activ class to li element when scroll  
+        if(elem.getAttribute('data-nav')==li.textContent){
+          li.classList.add('activ-li');
+        }else {
+          li.classList.remove('activ-li');
+        }
+      } else {
+        elem.classList.remove('your-active-class');
+      }
+    }); 
   });
 }
 
-
-
+// function to remove activ class from li
+function removAct(){
+  allLi.forEach(function(li){
+    li.classList.remove('activ-li')
+  });
+}

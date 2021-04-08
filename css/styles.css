@@ -79,7 +79,7 @@ a {
     text-decoration: none;
 }
 .navbar__menu .menu__link {
-    display: block;
+    display: inline-block;
     padding: 1em;
     font-weight: bold;
     text-decoration: none;
@@ -224,4 +224,8 @@ section.your-active-class .landing__container::after {
 		           translate(-1em) 
 		           rotate(-360deg);
 	}
+}
+/*class active to element li*/
+.activ-li {
+    background-color: lightslategray;
 }
